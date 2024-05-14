@@ -28,6 +28,12 @@ Here's a comparison of the **SpringBoot** annotations with their **.NET** counte
 
 @PathVariable vs [FromRoute]
 
+@RequestParam vs [FromQuery]
+
+@RequestBody vs [FromBody]
+
+@CrossOrigin vs CORS
+
 
 
 ## 1. @SpringBootApplication vs [Startup]
