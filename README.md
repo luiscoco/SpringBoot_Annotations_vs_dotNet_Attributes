@@ -26,7 +26,7 @@ Here's a comparison of the **SpringBoot** annotations with their **.NET** counte
 
 @RequestMapping vs [Route]
 
-
+@PathVariable vs [FromRoute]
 
 
 
