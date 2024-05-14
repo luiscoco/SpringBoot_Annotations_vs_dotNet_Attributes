@@ -80,8 +80,7 @@ public class MyApiController : ControllerBase
 
 **Spring Boot**:
 
-java
-Copy code
+```java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,10 +93,11 @@ public class MyService {
         this.myRepository = myRepository;
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.Extensions.DependencyInjection;
 
 public class MyService
@@ -109,18 +109,22 @@ public class MyService
         _myRepository = myRepository;
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddScoped<MyRepository>();
     services.AddScoped<MyService>();
 }
-4. @Entity vs [Table]
-Spring Boot:
+```
 
-java
+## 4. @Entity vs [Table]
+
+**Spring Boot**:
+
+```java
 Copy code
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -131,6 +135,8 @@ public class MyEntity {
     private Long id;
     private String name;
 }
+```
+
 .NET:
 
 csharp
