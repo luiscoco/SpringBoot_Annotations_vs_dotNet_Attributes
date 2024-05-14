@@ -306,10 +306,11 @@ public class MyComponent {
         return myProperty;
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.Extensions.Configuration;
 
 public class MyComponent
@@ -326,17 +327,20 @@ public class MyComponent
         return _myProperty;
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // appsettings.json
 {
     "MyProperty": "some value"
 }
-10. @RequestMapping vs [Route]
-Spring Boot:
+```
 
-java
-Copy code
+## 10. @RequestMapping vs [Route]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -350,10 +354,11 @@ public class MyApiController {
         return "Hello, World!";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -366,11 +371,13 @@ public class MyApiController : ControllerBase
         return "Hello, World!";
     }
 }
-11. @PathVariable vs [FromRoute]
-Spring Boot:
+```
 
-java
-Copy code
+## 11. @PathVariable vs [FromRoute]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -382,10 +389,11 @@ public class UserController {
         return "User ID: " + userId;
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -398,11 +406,13 @@ public class UserController : ControllerBase
         return "User ID: " + userId;
     }
 }
-12. @RequestParam vs [FromQuery]
-Spring Boot:
+```
 
-java
-Copy code
+## 12. @RequestParam vs [FromQuery]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -414,10 +424,11 @@ public class SearchController {
         return "Search query: " + query;
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -430,11 +441,13 @@ public class SearchController : ControllerBase
         return "Search query: " + query;
     }
 }
-13. @RequestBody vs [FromBody]
-Spring Boot:
+```
 
-java
-Copy code
+## 13. @RequestBody vs [FromBody]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -446,9 +459,11 @@ public class OrderController {
         return order;
     }
 }
-.NET:
+```
 
-csharp
+**.NET**:
+
+```csharp
 Copy code
 using Microsoft.AspNetCore.Mvc;
 
@@ -462,11 +477,13 @@ public class OrderController : ControllerBase
         return order;
     }
 }
-14. @ResponseBody vs [Produces]
-Spring Boot:
+```
 
-java
-Copy code
+## 14. @ResponseBody vs [Produces]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -479,10 +496,11 @@ public class MessageController {
         return "Hello, World!";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -496,11 +514,13 @@ public class MessageController : ControllerBase
         return "Hello, World!";
     }
 }
-15. @CrossOrigin vs CORS
-Spring Boot:
+```
 
-java
-Copy code
+## 15. @CrossOrigin vs CORS
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -513,10 +533,11 @@ public class ApiController {
         return "Data from server";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -531,8 +552,9 @@ public class ApiController : ControllerBase
         return "Data from server";
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
@@ -547,11 +569,13 @@ public void ConfigureServices(IServiceCollection services)
             });
     });
 }
-16. @ConditionalOnProperty vs Configuration Options
-Spring Boot:
+```
 
-java
-Copy code
+## 16. @ConditionalOnProperty vs Configuration Options
+
+**Spring Boot**:
+
+```java
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -565,10 +589,11 @@ public class MyConfiguration {
         return new MyBean();
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public class MyConfiguration
 {
     private readonly IConfiguration _configuration;
@@ -586,11 +611,13 @@ public class MyConfiguration
         }
     }
 }
-17. @Profile vs Environment Configuration
-Spring Boot:
+```
 
-java
-Copy code
+## 17. @Profile vs Environment Configuration
+
+**Spring Boot**:
+
+```java
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -610,10 +637,11 @@ public class MyProfileConfig {
         return new MyBean("Production Bean");
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public class MyProfileConfig
 {
     private readonly IWebHostEnvironment _env;
@@ -635,11 +663,13 @@ public class MyProfileConfig
         }
     }
 }
-18. @Retryable vs Polly
-Spring Boot:
+```
 
-java
-Copy code
+## 18. @Retryable vs Polly
+
+**Spring Boot**:
+
+```java
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
@@ -652,10 +682,11 @@ public class MyRetryableService {
         throw new RuntimeException("Operation failed, retrying...");
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Polly;
 
 public class MyRetryableService
@@ -677,11 +708,13 @@ public class MyRetryableService
         });
     }
 }
-19. @Scheduled vs IHostedService
-Spring Boot:
+```
 
-java
-Copy code
+## 19. @Scheduled vs IHostedService
+
+**Spring Boot**:
+
+```java
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -693,10 +726,11 @@ public class MyScheduledTask {
         System.out.println("Scheduled task executed every 5 seconds");
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
@@ -727,18 +761,21 @@ public class MyScheduledTask : IHostedService, IDisposable
         _timer?.Dispose();
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddHostedService<MyScheduledTask>();
 }
-20. @ConditionalOnMissingBean vs Configuration Options
-Spring Boot:
+```
 
-java
-Copy code
+## 20. @ConditionalOnMissingBean vs Configuration Options
+
+**Spring Boot**:
+
+```java
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -752,10 +789,11 @@ public class MyConditionalBeanConfig {
         return new MyBean();
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public class MyConditionalBeanConfig
 {
     private readonly IServiceCollection _services;
@@ -773,4 +811,8 @@ public class MyConditionalBeanConfig
         }
     }
 }
-These comparisons show how Spring Boot annotations and .NET attributes achieve similar goals, providing developers with declarative ways to manage configurations, dependency injections, web requests, transactions, and more. Both frameworks aim to simplify and streamline the development process while offering powerful features and flexibility.
+```
+
+These comparisons show how **Spring Boot annotations** and **.NET attributes** achieve similar goals, providing developers with declarative ways to manage configurations, dependency injections, web requests, transactions, and more
+
+Both frameworks aim to simplify and streamline the development process while offering powerful features and flexibility
