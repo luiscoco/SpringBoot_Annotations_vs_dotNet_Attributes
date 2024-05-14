@@ -137,10 +137,9 @@ public class MyEntity {
 }
 ```
 
-.NET:
+**.NET**:
 
-csharp
-Copy code
+```csharp
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -151,11 +150,13 @@ public class MyEntity
     public long Id { get; set; }
     public string Name { get; set; }
 }
-5. @Repository vs [Repository]
-Spring Boot:
+```
 
-java
-Copy code
+## 5. @Repository vs [Repository]
+
+**Spring Boot**:
+
+```java
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -163,10 +164,11 @@ import org.springframework.stereotype.Repository;
 public interface MyRepository extends JpaRepository<MyEntity, Long> {
     // Custom query methods can be defined here
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public interface IMyRepository
 {
     // Custom query methods can be defined here
@@ -176,18 +178,21 @@ public class MyRepository : IMyRepository
 {
     // Implement the custom query methods here
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddScoped<IMyRepository, MyRepository>();
 }
-6. @Service vs [Service]
-Spring Boot:
+```
 
-java
-Copy code
+## 6. @Service vs [Service]
+
+**Spring Boot**:
+
+```java
 import org.springframework.stereotype.Service;
 
 @Service
@@ -196,10 +201,11 @@ public class MyService {
         return "Service Layer Message";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public class MyService
 {
     public string GetServiceMessage()
@@ -207,18 +213,21 @@ public class MyService
         return "Service Layer Message";
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddScoped<MyService>();
 }
-7. @Component vs [Injectable]
-Spring Boot:
+```
 
-java
-Copy code
+## 7. @Component vs [Injectable]
+
+**Spring Boot**:
+
+```java
 import org.springframework.stereotype.Component;
 
 @Component
@@ -227,10 +236,11 @@ public class MyComponent {
         return "Component Message";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 public class MyComponent
 {
     public string GetComponentMessage()
@@ -238,18 +248,21 @@ public class MyComponent
         return "Component Message";
     }
 }
-csharp
-Copy code
+```
+
+```csharp
 // Startup.cs
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddScoped<MyComponent>();
 }
-8. @Configuration vs [Configuration]
-Spring Boot:
+```
 
-java
-Copy code
+## 8. @Configuration vs [Configuration]
+
+**Spring Boot**:
+
+```java
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -260,10 +273,11 @@ public class MyConfiguration {
         return new MyBean();
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.Extensions.DependencyInjection;
 
 public class MyConfiguration
@@ -273,11 +287,13 @@ public class MyConfiguration
         services.AddSingleton<MyBean>();
     }
 }
-9. @Value vs [Configuration]
-Spring Boot:
+```
 
-java
-Copy code
+## 9. @Value vs [Configuration]
+
+**Spring Boot**:
+
+```java
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
