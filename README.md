@@ -865,6 +865,194 @@ public class MyConditionalBeanConfig
 }
 ```
 
+## 21. @EventListener vs EventHandler
+
+**Spring Boot**:
+
+```java
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyEventListener {
+
+    @EventListener
+    public void handleContextRefreshedEvent(ContextRefreshedEvent event) {
+        System.out.println("Context Refreshed Event received: " + event);
+    }
+}
+```
+
+**.NET**:
+
+```csharp
+using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+public class MyEvent
+{
+    public string Message { get; set; }
+}
+
+public class MyEventListener
+{
+    public void Handle(MyEvent myEvent)
+    {
+        Console.WriteLine("Event received: " + myEvent.Message);
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var host = CreateHostBuilder(args).Build();
+
+        var eventBus = host.Services.GetRequiredService<IEventBus>();
+        eventBus.Publish(new MyEvent { Message = "Hello, Event!" });
+
+        host.Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureServices((_, services) =>
+                services.AddSingleton<IEventBus, EventBus>()
+                        .AddSingleton<MyEventListener>());
+}
+
+public interface IEventBus
+{
+    void Publish<T>(T @event);
+}
+
+public class EventBus : IEventBus
+{
+    private readonly IServiceProvider _serviceProvider;
+
+    public EventBus(IServiceProvider serviceProvider)
+    {
+        _serviceProvider = serviceProvider;
+    }
+
+    public void Publish<T>(T @event)
+    {
+        var handlers = _serviceProvider.GetServices<IEventHandler<T>>();
+        foreach (var handler in handlers)
+        {
+            handler.Handle(@event);
+        }
+    }
+}
+
+public interface IEventHandler<T>
+{
+    void Handle(T @event);
+}
+```
+
+## 22. @Transactional vs TransactionScope
+
+**Spring Boot**:
+
+```java
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class MyTransactionalService {
+
+    @Transactional
+    public void performTransactionalOperation() {
+        // Code that requires transaction management
+    }
+}
+```
+
+**.NET**:
+
+```csharp
+using System;
+using System.Transactions;
+
+public class MyTransactionalService
+{
+    public void PerformTransactionalOperation()
+    {
+        using (var scope = new TransactionScope())
+        {
+            try
+            {
+                // Code that requires transaction management
+
+                scope.Complete();
+            }
+            catch
+            {
+                // Transaction will be rolled back
+                throw;
+            }
+        }
+    }
+}
+```
+
+## 23. @Cacheable vs ResponseCache
+
+**Spring Boot**:
+
+```java
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyCacheService {
+
+    @Cacheable("items")
+    public Item getItemById(Long id) {
+        // Code to retrieve item by id
+        return new Item(id, "Cached Item");
+    }
+}
+```
+
+**.NET**:
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+public class Item
+{
+    public long Id { get; set; }
+    public string Name { get; set; }
+}
+
+[ApiController]
+[Route("[controller]")]
+public class ItemController : ControllerBase
+{
+    [HttpGet("{id}")]
+    [ResponseCache(Duration = 60)]
+    public ActionResult<Item> GetItemById(long id)
+    {
+        // Code to retrieve item by id
+        return new Item { Id = id, Name = "Cached Item" };
+    }
+}
+```
+
+## 24. @Async vs Task.Run
+
+
+## 25. @Conditional vs Custom Middleware
+
+
+
+## 26. @EnableWebSecurity vs AddAuthentication
+
+
+
 These comparisons show how **Spring Boot annotations** and **.NET attributes** achieve similar goals, providing developers with declarative ways to manage configurations, dependency injections, web requests, transactions, and more
 
 Both frameworks aim to simplify and streamline the development process while offering powerful features and flexibility
