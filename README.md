@@ -1079,7 +1079,88 @@ public class MyAsyncService
 
 ## 25. @Conditional vs Custom Middleware
 
+**Spring Boot**:
 
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MyConditionalConfig {
+
+    @Bean
+    @Conditional(MyCondition.class)
+    public MyBean myBean() {
+        return new MyBean();
+    }
+}
+
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.type.AnnotatedTypeMetadata;
+
+public class MyCondition implements Condition {
+    @Override
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        // Custom condition logic
+        return true; // or false based on the condition
+    }
+}
+```
+
+**.NET**:
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+
+public class MyConditionMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public MyConditionMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        if (ConditionMet())
+        {
+            await _next(context);
+        }
+        else
+        {
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        }
+    }
+
+    private bool ConditionMet()
+    {
+        // Custom condition logic
+        return true; // or false based on the condition
+    }
+}
+
+public static class MyConditionMiddlewareExtensions
+{
+    public static IApplicationBuilder UseMyConditionMiddleware(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<MyConditionMiddleware>();
+    }
+}
+```
+
+```csharp
+// Startup.cs
+public void Configure(IApplicationBuilder app)
+{
+    app.UseMyConditionMiddleware();
+    // Other middleware
+}
+```
 
 ## 26. @EnableWebSecurity vs AddAuthentication
 
