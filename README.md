@@ -34,7 +34,15 @@ Here's a comparison of the **SpringBoot** annotations with their **.NET** counte
 
 @CrossOrigin vs CORS
 
+@ConditionalOnProperty vs Configuration Options
 
+@Profile vs Environment Configuration
+
+@Retryable vs Polly
+
+@Scheduled vs IHostedService
+
+@ConditionalOnMissingBean vs Configuration Options
 
 ## 1. @SpringBootApplication vs [Startup]
 
