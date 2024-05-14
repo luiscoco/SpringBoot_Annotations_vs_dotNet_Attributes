@@ -4,6 +4,23 @@ Comparing **SpringBoot** annotations with similar **.NET** attributes can help h
 
 Here's a comparison of the **SpringBoot** annotations with their **.NET** counterparts:
 
+## Summary
+
+@SpringBootApplication vs [Startup]
+
+@RestController vs [ApiController]
+
+@Autowired vs [Inject]
+
+@Entity vs [Table]
+
+@Repository vs [Repository]
+
+@Service vs [Service]
+
+@Component vs [Injectable]
+
+
 ## 1. @SpringBootApplication vs [Startup]
 
 **Spring Boot**:
