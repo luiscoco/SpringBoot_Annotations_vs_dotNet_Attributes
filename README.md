@@ -1,12 +1,14 @@
 # Comparing SpringBoot annotations with similar .NET attributes 
 
-Comparing Spring Boot annotations with similar .NET attributes can help highlight the parallels between these two popular frameworks. Here's a comparison of the Spring Boot annotations with their .NET counterparts:
+Comparing **SpringBoot** annotations with similar **.NET** attributes can help highlight the parallels between these two popular frameworks
 
-1. @SpringBootApplication vs [Startup]
-Spring Boot:
+Here's a comparison of the **SpringBoot** annotations with their **.NET** counterparts:
 
-java
-Copy code
+## 1. @SpringBootApplication vs [Startup]
+
+**Spring Boot**:
+
+```java
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,10 +18,11 @@ public class MySpringBootApplication {
         SpringApplication.run(MySpringBootApplication.class, args);
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -37,11 +40,13 @@ public class Program
                 webBuilder.UseStartup<Startup>();
             });
 }
-2. @RestController vs [ApiController]
-Spring Boot:
+```
 
-java
-Copy code
+## 2. @RestController vs [ApiController]
+
+**Spring Boot**:
+
+```java
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,10 +57,11 @@ public class MyRestController {
         return "Hello, World!";
     }
 }
-.NET:
+```
 
-csharp
-Copy code
+**.NET**:
+
+```csharp
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -68,8 +74,11 @@ public class MyApiController : ControllerBase
         return "Hello, World!";
     }
 }
-3. @Autowired vs [Inject]
-Spring Boot:
+```
+
+## 3. @Autowired vs [Inject]
+
+**Spring Boot**:
 
 java
 Copy code
