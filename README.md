@@ -20,6 +20,15 @@ Here's a comparison of the **SpringBoot** annotations with their **.NET** counte
 
 @Component vs [Injectable]
 
+@Configuration vs [Configuration]
+
+@Value vs [Configuration]
+
+@RequestMapping vs [Route]
+
+
+
+
 
 ## 1. @SpringBootApplication vs [Startup]
 
