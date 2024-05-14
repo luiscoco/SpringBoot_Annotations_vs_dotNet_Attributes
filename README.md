@@ -1044,6 +1044,38 @@ public class ItemController : ControllerBase
 
 ## 24. @Async vs Task.Run
 
+**Spring Boot**:
+
+```java
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyAsyncService {
+
+    @Async
+    public void performAsyncTask() {
+        System.out.println("Executing task asynchronously");
+    }
+}
+```
+
+**.NET**:
+
+```csharp
+using System.Threading.Tasks;
+
+public class MyAsyncService
+{
+    public async Task PerformAsyncTask()
+    {
+        await Task.Run(() => 
+        {
+            Console.WriteLine("Executing task asynchronously");
+        });
+    }
+}
+```
 
 ## 25. @Conditional vs Custom Middleware
 
