@@ -44,6 +44,18 @@ Here's a comparison of the **SpringBoot** annotations with their **.NET** counte
 
 @ConditionalOnMissingBean vs Configuration Options
 
+@EventListener vs EventHandler
+
+@Transactional vs TransactionScope
+
+@Cacheable vs ResponseCache
+
+@Async vs Task.Run
+
+@Conditional vs Custom Middleware
+
+@EnableWebSecurity vs AddAuthentication
+
 ## 1. @SpringBootApplication vs [Startup]
 
 **Spring Boot**:
